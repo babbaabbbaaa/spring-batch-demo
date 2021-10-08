@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  jms:
+    pub-sub-domain: false
+  activemq:
+    user: admin
+    password: admin
+    broker-url: tcp://127.0.0.1:61616
+    pool:
+      enabled: true
+      max-connections: 10
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://1127.0.0.1:3306/test
+    username: test
+    password: [Encrypted]
+    hikari:
+      maximum-pool-size: 10
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.1:27017/test?gssapiServiceName=mongodb
+
+
+  batch:
+    job:
+      enabled: false
