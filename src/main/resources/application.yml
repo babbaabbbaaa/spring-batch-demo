@@ -3,7 +3,7 @@ server:
 
 spring:
   jms:
-    pub-sub-domain: false
+    pub-sub-domain: true
   activemq:
     user: admin
     password: admin

@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.QueueChannel;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 @Configuration
@@ -36,7 +37,7 @@ public class BatchIntegrationConfig{
         connectionFactory.setUserName(username);
         connectionFactory.setPassword(password);
         connectionFactory.setTrustAllPackages(true);
-        connectionFactory.setTrustedPackages(Collections.emptyList());
+        connectionFactory.setTrustedPackages(Arrays.asList("com", "java", "org"));//set trusted packages name/prefix
         ActiveMQPrefetchPolicy policy = new ActiveMQPrefetchPolicy();
         policy.setQueuePrefetch(0);
         connectionFactory.setPrefetchPolicy(policy);
