@@ -11,6 +11,10 @@ spring:
     pool:
       enabled: true
       max-connections: 10
+    requests:
+      topic: topic_requests
+    replies:
+      topic: topic_replies
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://1127.0.0.1:3306/test

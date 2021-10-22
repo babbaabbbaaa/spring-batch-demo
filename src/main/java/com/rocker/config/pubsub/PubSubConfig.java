@@ -9,6 +9,9 @@ import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.jms.dsl.Jms;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+import org.springframework.jms.config.JmsListenerContainerFactory;
+import org.springframework.jms.listener.DefaultMessageListenerContainer;
 
 @Configuration
 public class PubSubConfig {
@@ -30,6 +33,15 @@ public class PubSubConfig {
         return IntegrationFlows.from(Jms.publishSubscribeChannel(connectionFactory).destination(replyTopic).autoStartup(false))
                 .channel(replies)
                 .get();
+    }
+
+
+    @Bean
+    public JmsListenerContainerFactory<DefaultMessageListenerContainer> jmsListenerContainerFactory(ActiveMQConnectionFactory connectionFactory) {
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory);
+        factory.setPubSubDomain(true);
+        return factory;
     }
 
 }
