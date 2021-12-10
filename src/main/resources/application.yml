@@ -50,3 +50,8 @@ spring:
             threadPriority: 5
             threadsInheritContextClassLoaderOfInitializingThread: true
     job-store-type: jdbc
+
+
+jasypt:
+  encryptor:
+    password: lks(*(sk8171923
